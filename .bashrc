@@ -1,0 +1,187 @@
+#    _               _              
+#   | |__   __ _ ___| |__  _ __ ___ 
+#   | '_ \ / _` / __| '_ \| '__/ __|
+#  _| |_) | (_| \__ \ | | | | | (__ 
+# (_)_.__/ \__,_|___/_| |_|_|  \___|
+# 
+# by Yuvan Michael Vivenzi (YMV) (2024)
+# -----------------------------------------------------
+# ~/.bashrc
+# -----------------------------------------------------
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+PS1='[\u@\h \W]\$ '
+
+# Define Editor
+export EDITOR=nvim
+
+# -----------------------------------------------------
+# MY CUSTOM ALIASES
+# -----------------------------------------------------
+alias install='sudo reflector --latest 50 --number 20 --sort score --save /etc/pacman.d/mirrorlist && sudo pacman --needed -S '
+alias install-aur='sudo reflector --latest 50 --number 20 --sort score --save /etc/pacman.d/mirrorlist && yay --needed -S '
+alias uninstall='sudo pacman -R '
+alias remove='sudo pacman -R '
+alias uninstall-aur='yay -R '
+alias remove-aur='yay -R '
+alias upd='sudo reflector --latest 50 --number 20 --sort score --save /etc/pacman.d/mirrorlist && sudo pacman -Syu && yay -Syu && yay -Syu --devel' # Adding the --devel to update Hyprland packages to the latest git
+alias update='sudo reflector --latest 50 --number 20 --sort score --save /etc/pacman.d/mirrorlist && sudo pacman -Syu && yay -Syu && yay -Syu --devel' # Bleeding edge :D
+alias search='sudo pacman -Ss '
+alias search-aur='yay -Ss '
+alias get='git clone '
+alias musicinfo='playerctl metadata --format "{{title}} - {{artist}}"'
+alias ytspamblock='./ytspamblockpy.sh'
+alias netcheck='ping google.com'
+alias train='sl '
+alias keys='nvim ~/.config/hypr/keybindings.conf'
+alias autostart='nvim ~/.config/hypr/hyprland.conf'
+alias userprefs='nvim ~/.config/hypr/userprefs.conf'
+alias wb='nvim ~/.config/waybar/config.jsonc'
+alias wbs='nvim ~/.config/waybar/style.css'
+alias unlock='sudo rm /var/lib/pacman/db.lck'    # remove pacman lock
+alias orphan='sudo pacman -Rns $(pacman -Qtdq)' # remove orphaned packages (DANGEROUS!)
+alias mirror="sudo reflector -f 30 -l 30 --number 10 --verbose --save /etc/pacman.d/mirrorlist"
+alias mirrord="sudo reflector --latest 50 --number 20 --sort delay --save /etc/pacman.d/mirrorlist"
+alias mirrors="sudo reflector --latest 50 --number 20 --sort score --save /etc/pacman.d/mirrorlist"
+alias mirrora="sudo reflector --latest 50 --number 20 --sort age --save /etc/pacman.d/mirrorlist"
+alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash' # PRANK!
+alias killvim='killall nvim && pkill nvim && pkill neovim && killall neovim && pkill vim && killall vim'
+alias shelledit='nvim .bashrc'
+alias makeexec='chmod +x '
+
+# -----------------------------------------------------
+# ALIASES
+# -----------------------------------------------------
+alias c='clear'
+alias nf='fastfetch'
+alias pf='fastfetch'
+alias ff='fastfetch'
+alias ls='eza -a --icons'
+alias ll='eza -al --icons'
+alias lt='eza -a --tree --level=1 --icons'
+alias shutdown='systemctl poweroff'
+alias v='$EDITOR'
+alias vim='$EDITOR'
+alias ts='~/dotfiles/scripts/snapshot.sh'
+alias matrix='cmatrix'
+alias wifi='nmtui'
+alias od='~/private/onedrive.sh'
+alias rw='~/dotfiles/waybar/reload.sh'
+alias winclass="xprop | grep 'CLASS'"
+alias dot="cd ~/dotfiles/"
+alias cleanup='~/dotfiles/scripts/cleanup.sh'
+
+# -----------------------------------------------------
+# ML4W Apps
+# -----------------------------------------------------
+alias ml4w='~/dotfiles/apps/ML4W_Welcome-x86_64.AppImage'
+alias ml4w-settings='~/dotfiles/apps/ML4W_Dotfiles_Settings-x86_64.AppImage'
+alias ml4w-sidebar='~/dotfiles/eww/ml4w-sidebar/launch.sh'
+alias ml4w-hyprland='~/dotfiles/apps/ML4W_Hyprland_Settings-x86_64.AppImage'
+alias ml4w-diagnosis='~/dotfiles/hypr/scripts/diagnosis.sh'
+alias ml4w-hyprland-diagnosis='~/dotfiles/hypr/scripts/diagnosis.sh'
+alias ml4w-qtile-diagnosis='~/dotfiles/qtile/scripts/diagnosis.sh'
+
+# -----------------------------------------------------
+# Window Managers
+# -----------------------------------------------------
+
+alias Qtile='startx'
+# Hyprland with Hyprland
+
+# -----------------------------------------------------
+# GIT
+# -----------------------------------------------------
+alias gs="git status"
+alias ga="git add"
+alias gc="git commit -m"
+alias gp="git push"
+alias gpl="git pull"
+alias gst="git stash"
+alias gsp="git stash; git pull"
+alias gcheck="git checkout"
+alias gcredential="git config credential.helper store"
+
+# -----------------------------------------------------
+# SCRIPTS
+# -----------------------------------------------------
+alias gr='python ~/dotfiles/scripts/growthrate.py'
+alias ChatGPT='python ~/mychatgpt/mychatgpt.py'
+alias chat='python ~/mychatgpt/mychatgpt.py'
+alias ascii='~/dotfiles/scripts/figlet.sh'
+
+# -----------------------------------------------------
+# VIRTUAL MACHINE
+# -----------------------------------------------------
+alias vm='~/private/launchvm.sh'
+alias lg='~/dotfiles/scripts/looking-glass.sh'
+
+# -----------------------------------------------------
+# EDIT CONFIG FILES
+# -----------------------------------------------------
+alias confq='$EDITOR ~/dotfiles/qtile/config.py'
+alias confp='$EDITOR ~/dotfiles/picom/picom.conf'
+alias confb='$EDITOR ~/dotfiles/.bashrc'
+
+# -----------------------------------------------------
+# EDIT NOTES
+# -----------------------------------------------------
+alias notes='$EDITOR ~/notes.txt'
+
+# -----------------------------------------------------
+# SYSTEM
+# -----------------------------------------------------
+alias update-grub='sudo grub-mkconfig -o /boot/grub/grub.cfg'
+alias setkb='setxkbmap de;echo "Keyboard set back to de."'
+
+# -----------------------------------------------------
+# SCREEN RESOLUTINS
+# -----------------------------------------------------
+
+# Qtile
+alias res1='xrandr --output DisplayPort-0 --mode 2560x1440 --rate 120'
+alias res2='xrandr --output DisplayPort-0 --mode 1920x1080 --rate 120'
+
+export PATH="/usr/lib/ccache/bin/:$PATH"
+
+# -----------------------------------------------------
+# DEVELOPMENT
+# -----------------------------------------------------
+alias dotsync="~/dotfiles-versions/dotfiles/.dev/sync.sh dotfiles"
+
+# -----------------------------------------------------------------------------------------------------------
+# PUT CD AND LS or (EZA) TOGETHER (LITERALLY A NO BRAINER THING TO KEEP 'cd "xyz"' as 'cd "xyz" && ls "xyz"')
+# -----------------------------------------------------------------------------------------------------------
+cdls() {
+        local dir="$1"
+        local dir="${dir:=$HOME}"
+        if [[ -d "$dir" ]]; then
+                cd "$dir" >/dev/null && eza -a --icons # Alternatively you can do ls --color=auto. After removing the 'ls' alias
+        else
+                echo "bash: cdls: $dir: Directory not found"
+        fi
+}
+
+# -----------------------------------------------------
+# START STARSHIP
+# -----------------------------------------------------
+eval "$(starship init bash)"
+
+
+# -----------------------------------------------------
+# Fastfetch if on wm
+# -----------------------------------------------------
+if [[ $(tty) == *"pts"* ]]; then
+    fastfetch --config examples/22 && cd
+else
+    echo
+    if [ -f /bin/qtile ]; then
+        echo "Start Qtile X11 with command Qtile"
+    fi
+    if [ -f /bin/hyprctl ]; then
+        echo "Start Hyprland with command Hyprland"
+    fi
+fi
+
+export EDITOR=nvim
